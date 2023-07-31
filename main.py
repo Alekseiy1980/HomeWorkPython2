@@ -42,16 +42,52 @@ from random import randint
 заданной во входном файле грядки.
 
 '''
+#
+# bushes = int(input("Введите колличество кустов "))
+# garden = [randint(1, 10) for i in range(bushes)]
+#
+# print(garden)
+# max_sum = 0
+# # Проходим по всем кустам и считаем максимальное кол-во ягод
+# for i in range(bushes):
+#     curr_sum = garden[i] + garden[(i + 1) % bushes] + garden[(i - 1 + bushes) % bushes]
+#     max_sum = max(max_sum, curr_sum)    # находим максимаальное  кол-во ягод
+#
+# print(max_sum)
 
-bushes = int(input("Введите колличество кустов "))
-garden = [randint(1, 10) for i in range(bushes)]
+'''
+задача 1 необязательная. Напишите программу, которая получает целое число и возвращает его двоичное, восьмеричное строковое представление.
+Функции bin и oct используйте для проверки своего результата.
+*Дополнительно
+Попробуйте избежать дублирования кода в преобразованиях к разным системам счисления
+Избегайте магических чисел
+Добавьте аннотацию типов где это возможно
+Используйте функции
+'''
+def binary(num: int) -> str:
+    tmp_num: int = 0
+    binary: str = ''
+    while num > 0:
+        tmp_num = num % 2
+        binary += str(tmp_num)
+        num = num // 2
+    sp = binary[::-1]
+    return sp
 
-print(garden)
-max_sum = 0
-# Проходим по всем кустам и считаем максимальное кол-во ягод
-for i in range(bushes):
-    curr_sum = garden[i] + garden[(i + 1) % bushes] + garden[(i - 1 + bushes) % bushes]
-    max_sum = max(max_sum, curr_sum)    # находим максимаальное  кол-во ягод
+def octal(num: int) -> str:
+    tmp_num: int = 0
+    oct: str = ''
+    while num > 0:
+        tmp_num = num % 8
+        oct = str(tmp_num) + oct
+        num = num // 8
+    return oct
 
-print(max_sum)
 
+num = int(input("Введите целое число - "))
+sp = binary(num)
+print (f"{num } В двоичной системе {sp}")
+print(f" проверка {bin(num)}")
+oc = octal(num)
+print(f"{num} в восьмеричной системе {oc}")
+print(f" проверка {oct(num)}")
